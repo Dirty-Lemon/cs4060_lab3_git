@@ -13,11 +13,13 @@ class Qr():
     def myImgRead(self, imgPath, pltTitle = 'Image')-> None:
         mpl.rcParams['figure.figsize'] = (8.0, 8.0)
         cv2_qr = cv2.imread(imgPath)
+        # cv2.imwrite(imgPath, cv2_qr)
         plt.imshow(cv2_qr); plt.title(pltTitle)
         plt.show()
         
     def qrCodeDetector(self, imgPath):
         qrDetector = cv2.QRCodeDetector()
+        qrDetector.decode(imgPath)        
         
         # Detect QR code in image
         # Output stored in (this order):
