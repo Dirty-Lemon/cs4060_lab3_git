@@ -4,7 +4,10 @@ class main():
     qr = MyQR()
     
     # Task 1 - Read image
-    qrImg = qr.myImgRead('qrcode.png')
+    
+    print("What qr code would you like to read?")
+    imgToRead = input()
+    qrImg = qr.myImgRead(imgToRead)
     
     # Task 2 - Detect QR Code in image
     opencvData, bbox, rectifiedImage = qr.myDetect(qrImg)
@@ -12,7 +15,14 @@ class main():
         print("QR Code Detected")
         
         # Task 3 - Draw bounding box
-        qr.myBoundBox(bbox)
+        imgWithBorder = qr.myBoundBox(bbox, rectifiedImage)
+        
+        #Task 4 - Print decoded text
+        qr.myDecode(opencvData)
+        
+        # Task 5  Save and display result
+        # qr.myShowImg(rectifiedImage)
+        
     else: print("QR Code Not Detected")
 
 
