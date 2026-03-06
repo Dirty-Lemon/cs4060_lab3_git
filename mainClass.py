@@ -1,13 +1,19 @@
-from detectorClass import *
+from MyQRClass import *
 
 class main():
-    qr = Qr()
+    qr = MyQR()
     
     # Task 1 - Read image
-    qr.myImgRead('img/qrcode.png', 'QR Code')
+    qrImg = qr.myImgRead('qrcode.png')
     
     # Task 2 - Detect QR Code in image
-    # qr.qrCodeDetector('img/qrcode.png')
+    opencvData, bbox, rectifiedImage = qr.myDetect(qrImg)
+    if opencvData != None:
+        print("QR Code Detected")
+        
+        # Task 3 - Draw bounding box
+        qr.myBoundBox(bbox)
+    else: print("QR Code Not Detected")
 
 
 if __name__ == "__main__":
