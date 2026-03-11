@@ -13,9 +13,12 @@ class main():
     opencvData, bbox, rectifiedImage = qr.myDetect(qrImg)
     if opencvData != None:
         print("QR Code Detected")
+        qr.myShowImg(qrImg)
         
         # Task 3 - Draw bounding box
         imgWithBorder = qr.myBoundBox(bbox, rectifiedImage)
+        print("Loading qr code...")
+        qr.myShowImg(imgWithBorder)
         
         #Task 4 - Print decoded text
         qr.myDecode(opencvData)
